@@ -16,6 +16,8 @@ export default function MultiFilters() {
         }
     };
 
+
+
     useEffect(() => {
         filterItems();
     }, [selectedFilters]);
