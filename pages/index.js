@@ -9,7 +9,9 @@ import Form from './../components/Form';
 export default function Home() {
   return (
     <div>
-      Scholar Engine
+
+      <p className='text-center text-lg p-5'>Scholar Engine</p>
+
 
       <Form></Form>
     </div>
