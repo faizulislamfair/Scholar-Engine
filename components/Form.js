@@ -1,28 +1,20 @@
-import React from 'react';
-import { useState } from 'react';
-
+import React, { useState } from 'react';
+import * as tf from '@tensorflow/tfjs';
 
 const Form = () => {
-
     const [formData, setFormData] = useState({
         money: '',
         ielts: '',
         gre: ''
     });
-    const [matchingPercentage, setMatchingPercentage] = useState(null);
 
-    const criteria = [
-        [51000, 5, 320],
-        [52000, 5.5, 310],
-        [53000, 6, 320],
-        [54000, 6.5, 310],
-        [55000, 7, 320],
-        [56000, 7.5, 320],
-        [57000, 8, 320],
-        [58000, 8, 330],
-        [59000, 8, 340],
-        [60000, 8, 340]
+    const [matchingPercentages, setMatchingPercentages] = useState([]);
+
+    const criteriaArrays = [
+        [[51000, 5, 320], [52000, 5.5, 310], [53000, 6, 320]],
+        [[56000, 6, 330], [57000, 6.5, 320], [58000, 7, 330]]
     ];
+
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,18 +26,23 @@ const Form = () => {
     };
 
     const calculateMatching = () => {
-        let matches = 0;
-        criteria.forEach((criterion) => {
-            if (
-                formData.money >= criterion[0] &&
-                formData.ielts >= criterion[1] &&
-                formData.gre >= criterion[2]
-            ) {
-                matches++;
-            }
+        const inputData = tf.tensor2d([
+            [
+                parseFloat(formData.money),
+                parseFloat(formData.ielts),
+                parseFloat(formData.gre)
+            ]
+        ]);
+
+        const allPercentages = criteriaArrays.map(criteria => {
+            const criteriaData = tf.tensor2d(criteria);
+            const matches = inputData.greaterEqual(criteriaData).sum().arraySync();
+            return (matches / (criteria.length * 3)) * 100;
         });
-        setMatchingPercentage((matches / criteria.length) * 100);
+
+        setMatchingPercentages(allPercentages);
     };
+
 
 
     return (
@@ -75,8 +72,14 @@ const Form = () => {
                 />
                 <button type="submit">Submit</button>
             </form>
-            {matchingPercentage !== null && (
-                <p>Matching Percentage: {matchingPercentage.toFixed(2)}%</p>
+            {matchingPercentages.length > 0 && (
+                <div>
+                    {matchingPercentages.map((percentage, index) => (
+                        <p key={index}>
+                            Matching Percentage for Criteria {index + 1}: {percentage.toFixed(2)}%
+                        </p>
+                    ))}
+                </div>
             )}
         </div>
     );
