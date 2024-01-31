@@ -55,8 +55,12 @@ const Form = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+            <form
+                onSubmit={handleSubmit}
+                className="flex flex-col items-center justify-center p-4 bg-white shadow-md rounded-lg max-w-md mx-auto my-8"
+            >
                 <input
+                    className="p-2 mb-4 w-full border-2 border-gray-200 rounded-md"
                     type="number"
                     name="money"
                     placeholder="Amount of Money"
@@ -64,6 +68,7 @@ const Form = () => {
                     onChange={handleChange}
                 />
                 <input
+                    className="p-2 mb-4 w-full border-2 border-gray-200 rounded-md"
                     type="number"
                     name="ielts"
                     placeholder="IELTS Score"
@@ -72,14 +77,22 @@ const Form = () => {
                     onChange={handleChange}
                 />
                 <input
+                    className="p-2 mb-4 w-full border-2 border-gray-200 rounded-md"
                     type="number"
                     name="gre"
                     placeholder="GRE Score"
                     value={formData.gre}
                     onChange={handleChange}
                 />
-                <button type="submit">Submit</button>
+                <button
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+                    type="submit"
+                >
+                    Submit
+                </button>
             </form>
+
+
             {matchingPercentages.length > 0 && (
                 <div>
                     {matchingPercentages.map((percentage, index) => (
