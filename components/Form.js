@@ -3,26 +3,27 @@ import * as tf from '@tensorflow/tfjs';
 
 const Form = () => {
     const [formData, setFormData] = useState({
-        money: '',
+        cgpa: '',
         ielts: '',
-        gre: ''
+        gre: '',
+        money: ''
     });
 
     const [matchingPercentages, setMatchingPercentages] = useState([]);
-    const [currentStep, setCurrentStep] = useState(0); // Start with 0
+    const [currentStep, setCurrentStep] = useState(0);
 
 
     const criteriaArrays = [
-        [[51001, 6.1, 311], [52002, 6.2, 312], [53003, 6.3, 313]],
-        [[56004, 6.4, 314], [57005, 6.5, 315], [58006, 6.6, 316]],
-        [[51007, 6.7, 317], [52008, 6.8, 318], [53009, 6.9, 319]],
-        [[56010, 7.0, 320], [57011, 7.1, 321], [58012, 7.2, 322]],
-        [[51013, 7.3, 323], [52014, 7.4, 324], [53015, 7.5, 325]],
-        [[56016, 7.6, 326], [57017, 7.7, 327], [58018, 7.8, 328]],
-        [[51019, 7.9, 329], [52020, 8.0, 330], [53021, 8.1, 331]],
-        [[56022, 8.2, 332], [57023, 8.3, 333], [58024, 8.4, 334]],
-        [[51025, 8.5, 335], [52026, 8.6, 336], [53027, 8.7, 337]],
-        [[56028, 8.8, 338], [57029, 8.9, 339], [58030, 9.0, 340]]
+        [[2.75, 6.1, 311, 51001], [3.25, 6.2, 312, 57000], [3.5, 6.3, 313, 53000]],
+        [[2.75, 6.4, 314, 52004], [3.25, 6.5, 315, 52000], [3.5, 6.6, 316, 58000]],
+        [[2.75, 6.7, 317, 51007], [3.25, 6.8, 318, 57000], [3.5, 6.9, 319, 53000]],
+        [[2.75, 7.0, 320, 50000], [3.25, 7.1, 321, 52000], [3.5, 7.2, 322, 58000]],
+        [[2.75, 7.3, 323, 50000], [3.25, 7.4, 324, 57000], [3.5, 7.5, 325, 53000]],
+        [[3, 7.6, 326, 56000], [3.25, 7.7, 327, 57000], [3.5, 7.8, 328, 58000]],
+        [[3, 7.9, 329, 51000], [3.25, 8.0, 330, 52000], [3.5, 8.1, 331, 53000]],
+        [[3, 8.2, 332, 56000], [3.25, 8.3, 333, 57000], [3.5, 8.4, 334, 58000]],
+        [[3, 8.5, 335, 51000], [3.25, 8.6, 336, 52000], [3.5, 8.7, 337, 53000]],
+        [[3, 8.8, 338, 56000], [3.25, 8.9, 339, 57000], [3.5, 9.0, 340, 58000]]
     ];
 
 
@@ -31,12 +32,12 @@ const Form = () => {
     };
 
     const handleMainButtonClick = () => {
-        setCurrentStep(1); // Start the input sequence when Main button is clicked
+        setCurrentStep(1);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (currentStep < 3) {
+        if (currentStep < 4) {
             setCurrentStep(currentStep + 1);
         } else {
             calculateMatching();
@@ -46,16 +47,17 @@ const Form = () => {
     const calculateMatching = () => {
         const inputData = tf.tensor2d([
             [
-                parseFloat(formData.money),
+                parseFloat(formData.cgpa),
                 parseFloat(formData.ielts),
-                parseFloat(formData.gre)
+                parseFloat(formData.gre),
+                parseFloat(formData.money)
             ]
         ]);
 
         const allPercentages = criteriaArrays.map(criteria => {
             const criteriaData = tf.tensor2d(criteria);
             const matches = inputData.greaterEqual(criteriaData).sum().arraySync();
-            return (matches / (criteria.length * 3)) * 100;
+            return (matches / (criteria.length * 4)) * 100;
         });
 
         setMatchingPercentages(allPercentages);
@@ -93,9 +95,9 @@ const Form = () => {
                             <input
                                 className="p-2 border-2 border-gray-200 rounded-md w-full"
                                 type="number"
-                                name="money"
-                                placeholder="Amount of Money"
-                                value={formData.money}
+                                name="cgpa"
+                                placeholder="CGPA"
+                                value={formData.cgpa}
                                 onChange={handleChange}
                             />
                         </div>
@@ -125,11 +127,23 @@ const Form = () => {
                             />
                         </div>
                     )}
+                    {currentStep === 4 && (
+                        <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                            <input
+                                className="p-2 border-2 border-gray-200 rounded-md w-full"
+                                type="number"
+                                name="money"
+                                placeholder="Amount of Money"
+                                value={formData.money}
+                                onChange={handleChange}
+                            />
+                        </div>
+                    )}
                     <button
                         className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4"
                         type="submit"
                     >
-                        {currentStep < 3 ? 'Next' : 'Submit'}
+                        {currentStep < 4 ? 'Next' : 'Submit'}
                     </button>
                 </form>
             )}
