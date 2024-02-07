@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 
-const Form = () => {
+const SearchBox = () => {
     const [formData, setFormData] = useState({
-        money: '',
-        ielts: '',
-        gre: ''
+        cgpa: '',
+        gre: '',
+        ielts: ''
     });
 
     const [matchingPercentages, setMatchingPercentages] = useState([]);
@@ -23,26 +23,30 @@ const Form = () => {
         [[56028, 8.8, 338], [57029, 8.9, 339], [58030, 9.0, 340]]
     ];
 
-
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        calculateMatching();
+    const handleSearch = async () => {
+        const cgpa = await prompt('Enter your CGPA:');
+        const gre = await prompt('Enter your GRE score:');
+        const ielts = await prompt('Enter your IELTS score:');
+
+        setFormData({
+            cgpa: cgpa || '',
+            gre: gre || '',
+            ielts: ielts || ''
+        });
+
+        calculateMatching(cgpa, gre, ielts);
     };
 
-    const calculateMatching = () => {
+    const calculateMatching = (cgpa, gre, ielts) => {
         const inputData = tf.tensor2d([
-            [
-                parseFloat(formData.money),
-                parseFloat(formData.ielts),
-                parseFloat(formData.gre)
-            ]
+            [parseFloat(cgpa), parseFloat(gre), parseFloat(ielts)]
         ]);
 
-        const allPercentages = criteriaArrays.map(criteria => {
+        const allPercentages = criteriaArrays.map((criteria) => {
             const criteriaData = tf.tensor2d(criteria);
             const matches = inputData.greaterEqual(criteriaData).sum().arraySync();
             return (matches / (criteria.length * 3)) * 100;
@@ -51,47 +55,24 @@ const Form = () => {
         setMatchingPercentages(allPercentages);
     };
 
-
-
     return (
         <div>
-            <form
-                onSubmit={handleSubmit}
-                className="flex flex-col items-center justify-center p-4 bg-white shadow-md rounded-lg max-w-md mx-auto my-8"
-            >
+            <div className="flex items-center justify-center p-4 bg-white shadow-md rounded-lg max-w-md mx-auto my-8">
                 <input
                     className="p-2 mb-4 w-full border-2 border-gray-200 rounded-md"
-                    type="number"
-                    name="money"
-                    placeholder="Amount of Money"
-                    value={formData.money}
-                    onChange={handleChange}
-                />
-                <input
-                    className="p-2 mb-4 w-full border-2 border-gray-200 rounded-md"
-                    type="number"
-                    name="ielts"
-                    placeholder="IELTS Score"
-                    step="0.1"
-                    value={formData.ielts}
-                    onChange={handleChange}
-                />
-                <input
-                    className="p-2 mb-4 w-full border-2 border-gray-200 rounded-md"
-                    type="number"
-                    name="gre"
-                    placeholder="GRE Score"
-                    value={formData.gre}
-                    onChange={handleChange}
+                    type="text"
+                    name="search"
+                    placeholder="Search..."
+                    value={`${formData.cgpa} CGPA, ${formData.gre} GRE, ${formData.ielts} IELTS`}
+                    readOnly
                 />
                 <button
                     className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    type="submit"
+                    onClick={handleSearch}
                 >
-                    Submit
+                    Search
                 </button>
-            </form>
-
+            </div>
 
             {matchingPercentages.length > 0 && (
                 <div>
@@ -106,6 +87,4 @@ const Form = () => {
     );
 };
 
-export default Form;
-
-
+export default SearchBox;

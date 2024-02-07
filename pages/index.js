@@ -12,6 +12,12 @@ export default function Home() {
 
       <p className='text-center text-lg p-5'>Scholar Engine</p>
 
+      <div className='text-center text-5xl p-5'>
+        Unlock Your Dream of <br />
+        Academic Excellence with <br />
+        Tailored Pathways
+      </div>
+
 
       <Form></Form>
     </div>
