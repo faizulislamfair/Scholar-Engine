@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 
-const SearchBox = () => {
+const Form = () => {
     const [formData, setFormData] = useState({
-        cgpa: '',
-        gre: '',
-        ielts: ''
+        money: '',
+        ielts: '',
+        gre: ''
     });
 
     const [matchingPercentages, setMatchingPercentages] = useState([]);
+    const [currentStep, setCurrentStep] = useState(1);
 
     const criteriaArrays = [
         [[51001, 6.1, 311], [52002, 6.2, 312], [53003, 6.3, 313]],
@@ -27,26 +28,25 @@ const SearchBox = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSearch = async () => {
-        const cgpa = await prompt('Enter your CGPA:');
-        const gre = await prompt('Enter your GRE score:');
-        const ielts = await prompt('Enter your IELTS score:');
-
-        setFormData({
-            cgpa: cgpa || '',
-            gre: gre || '',
-            ielts: ielts || ''
-        });
-
-        calculateMatching(cgpa, gre, ielts);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (currentStep < 3) {
+            setCurrentStep(currentStep + 1);
+        } else {
+            calculateMatching();
+        }
     };
 
-    const calculateMatching = (cgpa, gre, ielts) => {
+    const calculateMatching = () => {
         const inputData = tf.tensor2d([
-            [parseFloat(cgpa), parseFloat(gre), parseFloat(ielts)]
+            [
+                parseFloat(formData.money),
+                parseFloat(formData.ielts),
+                parseFloat(formData.gre)
+            ]
         ]);
 
-        const allPercentages = criteriaArrays.map((criteria) => {
+        const allPercentages = criteriaArrays.map(criteria => {
             const criteriaData = tf.tensor2d(criteria);
             const matches = inputData.greaterEqual(criteriaData).sum().arraySync();
             return (matches / (criteria.length * 3)) * 100;
@@ -56,26 +56,61 @@ const SearchBox = () => {
     };
 
     return (
-        <div>
-            <div className="flex items-center justify-center p-4 bg-white shadow-md rounded-lg max-w-md mx-auto my-8">
-                <input
-                    className="p-2 mb-4 w-full border-2 border-gray-200 rounded-md"
-                    type="text"
-                    name="search"
-                    placeholder="Search..."
-                    value={`${formData.cgpa} CGPA, ${formData.gre} GRE, ${formData.ielts} IELTS`}
-                    readOnly
-                />
+        <div className="flex flex-col items-center justify-center p-10 m-10">
+            <form
+                onSubmit={handleSubmit}
+                className="flex flex-col items-center p-4 mb-10 bg-white shadow-md rounded-lg"
+            >
+                {currentStep === 1 && (
+                    <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                        dfsf
+                        <input
+                            className="p-2 border-2 border-gray-200 rounded-md w-full"
+                            type="number"
+                            name="money"
+                            placeholder="Amount of Money"
+                            value={formData.money}
+                            onChange={handleChange}
+                        />
+                    </div>
+                )}
+                {currentStep === 2 && (
+                    <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                        sda
+                        <input
+                            className="p-2 border-2 border-gray-200 rounded-md w-full"
+                            type="number"
+                            name="ielts"
+                            placeholder="IELTS Score"
+                            step="0.1"
+                            value={formData.ielts}
+                            onChange={handleChange}
+                        />
+                    </div>
+                )}
+                {currentStep === 3 && (
+                    <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                        afd
+                        <input
+                            className="p-2 border-2 border-gray-200 rounded-md w-full"
+                            type="number"
+                            name="gre"
+                            placeholder="GRE Score"
+                            value={formData.gre}
+                            onChange={handleChange}
+                        />
+                    </div>
+                )}
                 <button
-                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-                    onClick={handleSearch}
+                    className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4"
+                    type="submit"
                 >
-                    Search
+                    {currentStep < 3 ? 'Next' : 'Submit'}
                 </button>
-            </div>
+            </form>
 
             {matchingPercentages.length > 0 && (
-                <div>
+                <div className="mt-4">
                     {matchingPercentages.map((percentage, index) => (
                         <p key={index}>
                             Admission Acceptance Percentage for University {index + 1}: {percentage.toFixed(2)}%
@@ -87,4 +122,4 @@ const SearchBox = () => {
     );
 };
 
-export default SearchBox;
+export default Form;
