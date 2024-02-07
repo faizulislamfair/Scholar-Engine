@@ -88,7 +88,7 @@ const Form = () => {
             {currentStep > 0 && (
                 <form
                     onSubmit={handleSubmit}
-                    className="flex flex-col items-center p-4 mb-10 bg-white shadow-md rounded-lg"
+                    className="flex flex-col items-center p-4 mb-10 bg-white shadow-md rounded-lg -translate-y-12"
                 >
                     {currentStep === 1 && (
                         <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
