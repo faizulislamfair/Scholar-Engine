@@ -70,9 +70,9 @@ const Form = () => {
                 currentStep === 0 ?
                     <button
                         onClick={handleMainButtonClick}
-                        className="flex flex-row px-4 py-2 bg-[#D4E9F7] text-[20px] justify-between text-white rounded text-black border border-[#3498DB] rounded-full mb-15 -translate-y-[80px]"
+                        className="flex flex-row px-4 py-1  bg-[#D4E9F7] text-[20px] justify-between text-white rounded text-black border border-[#3498DB] rounded-full mb-15 -translate-y-[80px]"
                     >
-                        Explore Your Compatibility with Renowned Universities &nbsp;&nbsp;&nbsp;&nbsp; <img src="/search.svg" className='w-[40px]' alt="" />
+                        Explore Your Compatibility with Renowned Universities &nbsp;&nbsp;&nbsp;&nbsp; <img src="/search.svg" className='w-[35px]' alt="" />
                     </button>
 
                     :
