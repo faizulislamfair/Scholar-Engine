@@ -73,7 +73,7 @@ const Form = () => {
                         className="flex flex-row px-4 py-1  bg-[#D4E9F7] text-[20px] justify-between rounded text-black border border-[#3498DB] rounded-full mb-15 -translate-y-[80px]"
                     >
                         Explore Your Compatibility with Renowned Universities &nbsp;&nbsp;&nbsp;&nbsp;
-                        {/* <img src="/search.svg" className='w-[35px]' alt="" /> */}
+                        <img src="/search.svg" className='w-[35px]' alt="" />
                     </button>
 
                     :
@@ -95,14 +95,13 @@ const Form = () => {
                     <p className='text-[24px]'> Tell us a bit about yourself</p>
 
 
-                    <p className='text-[#C27B0A] text-[18px]'>We need your data to process with our . We only save your data with your clear permission.</p>
+                    <p className='text-[#C27B0A] text-[18px]'>We need your data to process with our AI model. We only save your data with your clear permission.</p>
 
                     {currentStep === 1 && (
                         <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
 
                             <input
-                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
-                                type="number"
+                                className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
                                 name="cgpa"
                                 value={formData.cgpa}
                                 onChange={handleChange}
@@ -112,11 +111,8 @@ const Form = () => {
                     {currentStep === 2 && (
                         <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                             <input
-                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
-                                type="number"
+                                className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
                                 name="ielts"
-                                placeholder="IELTS Score"
-                                step="0.1"
                                 value={formData.ielts}
                                 onChange={handleChange}
                             />
@@ -125,10 +121,8 @@ const Form = () => {
                     {currentStep === 3 && (
                         <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                             <input
-                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
-                                type="number"
+                                className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
                                 name="gre"
-                                placeholder="GRE Score"
                                 value={formData.gre}
                                 onChange={handleChange}
                             />
@@ -137,10 +131,8 @@ const Form = () => {
                     {currentStep === 4 && (
                         <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                             <input
-                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
-                                type="number"
+                                className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
                                 name="money"
-                                placeholder="Amount of Money"
                                 value={formData.money}
                                 onChange={handleChange}
                             />
