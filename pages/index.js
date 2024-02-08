@@ -21,7 +21,7 @@ export default function Home() {
         </div>
 
         <div>
-          Academic Excellence with <img className='w-[100px] translate-x-[995px] -translate-y-[90px]' src="/hat.svg" alt="Hat" />
+          Academic Excellence with <img className='w-[100px] translate-x-[1010px] -translate-y-[90px]' src="/hat.svg" alt="Hat" />
         </div>
 
         <div className='-translate-y-[90px]'>
