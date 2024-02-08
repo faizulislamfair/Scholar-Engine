@@ -101,7 +101,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your current CGPA?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
+                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
                                     name="cgpa"
                                     value={formData.cgpa}
                                     onChange={handleChange}
@@ -112,7 +112,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your IELTS Score?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
+                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
                                     name="ielts"
                                     value={formData.ielts}
                                     onChange={handleChange}
@@ -123,7 +123,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your GRE Score?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
+                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
                                     name="gre"
                                     value={formData.gre}
                                     onChange={handleChange}
@@ -134,7 +134,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your estimated budget for study costs?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full"
+                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
                                     name="money"
                                     value={formData.money}
                                     onChange={handleChange}
@@ -168,8 +168,8 @@ const Form = () => {
                                 <p className='flex flex-row gap-5 p-2' key={index}>
                                     <img className='w-[30px] -translate-y-1' src="/university.svg" alt="" />University {index + 1}
                                     <span className={`ml-12 ${percentage >= 80 ? 'text-green-500' :
-                                        percentage >= 70 ? 'text-blue-500' :
-                                            percentage >= 50 ? 'text-yellow-500' :
+                                        percentage >= 70 ? 'text-[#3498DB]' :
+                                            percentage >= 50 ? 'text-[#C27B0A]' :
                                                 'text-red-500'
                                         }`}>
                                         {percentage.toFixed(2)}%
