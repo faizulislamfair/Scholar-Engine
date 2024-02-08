@@ -33,8 +33,8 @@ export default function Home() {
         </div>
 
         <div className=''>
-          <img src="/ellipse_1.svg" className='-translate-x-[100px] -translate-y-[500px] -z-[10]' alt="Ellipse 1" />
-          <img src="/ellipse_2.svg" className='translate-x-[770px] -translate-y-[1580px] -z-[10]' alt="Ellipse 2" />
+          <img src="/ellipse_1.svg" className='-translate-x-[100px] -translate-y-[500px]' alt="Ellipse 1" />
+          <img src="/ellipse_2.svg" className='translate-x-[760px] -translate-y-[1580px]' alt="Ellipse 2" />
         </div>
 
       </div>
