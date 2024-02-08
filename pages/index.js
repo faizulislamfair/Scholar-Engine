@@ -10,9 +10,11 @@ export default function Home() {
   return (
     <div>
 
-      <p className='text-center text-lg p-5'>Scholar Engine</p>
+      <div className='grid grid-cols-1 place-content-center content-center place-items-center p-3'>
+        <img className='' src='/logo.svg' alt='Logo' />
+      </div>
 
-      <div className='text-center text-5xl p-5 font-bold'>
+      <div className='text-center text-5xl pt-8 pb-5 font-bold'>
         <div className=''>
           <img className='w-[250px] ml-20 translate-x-[300px] translate-y-[25px]' src="/airplane.svg" alt="Airplane" />
           Unlock Your Dream of
