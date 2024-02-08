@@ -64,7 +64,7 @@ const Form = () => {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center p-10 m-10">
+        <div className="flex flex-col items-center justify-center p-10 m-10 -translate-y-[1750px]">
 
             {
                 currentStep === 0 ?
