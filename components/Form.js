@@ -4,11 +4,8 @@ import * as tf from '@tensorflow/tfjs';
 const Form = () => {
 
     const handleReload = () => {
+        window.scrollTo(0, 0);
         window.location.reload();
-
-        useLayoutEffect(() => {
-            window.scrollTo(0, 0)
-        });
     };
 
     const [formData, setFormData] = useState({
