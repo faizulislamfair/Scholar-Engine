@@ -89,24 +89,30 @@ const Form = () => {
             {currentStep > 0 && (
                 <form
                     onSubmit={handleSubmit}
-                    className="flex flex-col items-center p-4 mb-10 bg-white shadow-md rounded-lg -translate-y-12"
+                    className="flex flex-col items-center p-4 mb-10 bg-white shadow-md rounded-lg -translate-y-[100px] text-center"
                 >
+
+                    <p className='text-[24px]'> Tell us a bit about yourself</p>
+
+
+                    <p className='text-[#C27B0A] text-[18px]'>We need your data to process with our . We only save your data with your clear permission.</p>
+
                     {currentStep === 1 && (
-                        <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                        <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
+
                             <input
-                                className="p-2 border-2 border-gray-200 rounded-md w-full"
+                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
                                 type="number"
                                 name="cgpa"
-                                placeholder="CGPA"
                                 value={formData.cgpa}
                                 onChange={handleChange}
                             />
                         </div>
                     )}
                     {currentStep === 2 && (
-                        <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                        <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                             <input
-                                className="p-2 border-2 border-gray-200 rounded-md w-full"
+                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
                                 type="number"
                                 name="ielts"
                                 placeholder="IELTS Score"
@@ -117,9 +123,9 @@ const Form = () => {
                         </div>
                     )}
                     {currentStep === 3 && (
-                        <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                        <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                             <input
-                                className="p-2 border-2 border-gray-200 rounded-md w-full"
+                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
                                 type="number"
                                 name="gre"
                                 placeholder="GRE Score"
@@ -129,9 +135,9 @@ const Form = () => {
                         </div>
                     )}
                     {currentStep === 4 && (
-                        <div className="mb-4 opacity-7 transition-opacity duration-500 ease-in-out transform translate-y-4">
+                        <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                             <input
-                                className="p-2 border-2 border-gray-200 rounded-md w-full"
+                                className="p-2 border-2 text-black border-gray-200 rounded-md w-full"
                                 type="number"
                                 name="money"
                                 placeholder="Amount of Money"
@@ -141,7 +147,7 @@ const Form = () => {
                         </div>
                     )}
                     <button
-                        className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 mt-4"
+                        className="px-4 py-2 bg-[#D4E9F7] rounded-full border border-[#3498DB]  text-black rounded mt-4"
                         type="submit"
                     >
                         {currentStep < 4 ? 'Next' : 'Submit'}
