@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import * as tf from '@tensorflow/tfjs';
 
 const Form = () => {
 
     const handleReload = () => {
         window.location.reload();
+
+        useLayoutEffect(() => {
+            window.scrollTo(0, 0)
+        });
     };
 
     const [formData, setFormData] = useState({
