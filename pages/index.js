@@ -22,12 +22,12 @@ export default function Home() {
 
         <div className='text-center text-5xl pt-8 pb-5 font-bold z-55'>
           <div className='z-1'>
-            <img className='w-[250px] ml-20 translate-x-[200px] translate-y-[20px] z-1' src="/airplane.svg" alt="Airplane" />
+            <img className='w-[250px] ml-20 translate-x-[185px] translate-y-[20px] z-1' src="/airplane.svg" alt="Airplane" />
             Unlock Your Dream of
           </div>
 
           <div className='z-99'>
-            Academic Excellence with <img className='w-[100px] translate-x-[880px] -translate-y-[90px] z-99' src="/hat.svg" alt="Hat" />
+            Academic Excellence with <img className='w-[100px] translate-x-[905px] -translate-y-[90px] z-99' src="/hat.svg" alt="Hat" />
           </div>
 
           <div className='-translate-y-[90px] z-1'>
