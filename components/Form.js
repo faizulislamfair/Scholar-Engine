@@ -150,14 +150,14 @@ const Form = () => {
 
                     <div>
                         <button
-                            className="px-4 py-2 bg-[#D4E9F7] rounded-full border border-[#3498DB] text-black rounded mt-4 mr-2"
+                            className="px-4 py-2 bg-[#fff] rounded-full border font-semibold border-[#3498DB] text-black rounded-md mt-4 mr-2"
                             onClick={handleBackButtonClick}
                             type="button"
                         >
                             Back
                         </button>
                         <button
-                            className="px-4 py-2 bg-[#D4E9F7] rounded-full border border-[#3498DB] text-black rounded mt-4"
+                            className="px-4 py-2 bg-[#3498DB] rounded-full text-white font-semibold border border-[#3498DB] text-black rounded-md mt-4"
                             type="submit"
                         >
                             {currentStep < 4 ? 'Next' : 'Submit'}
