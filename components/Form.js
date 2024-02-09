@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 
 const Form = () => {
-
     const handleReload = () => {
         window.scrollTo(0, 0);
         window.location.reload();
@@ -38,6 +37,10 @@ const Form = () => {
 
     const handleMainButtonClick = () => {
         setCurrentStep(1);
+    };
+
+    const handleBackButtonClick = () => {
+        setCurrentStep(currentStep - 1);
     };
 
     const handleSubmit = (e) => {
@@ -143,22 +146,33 @@ const Form = () => {
                             </div>
                         )}
                     </div>
-                    <button
-                        className="px-4 py-2 bg-[#D4E9F7] rounded-full border border-[#3498DB]  text-black rounded mt-4"
-                        type="submit"
-                    >
-                        {currentStep < 4 ? 'Next' : 'Submit'}
-                    </button>
+
+
+                    <div>
+                        <button
+                            className="px-4 py-2 bg-[#D4E9F7] rounded-full border border-[#3498DB] text-black rounded mt-4 mr-2"
+                            onClick={handleBackButtonClick}
+                            type="button"
+                        >
+                            Back
+                        </button>
+                        <button
+                            className="px-4 py-2 bg-[#D4E9F7] rounded-full border border-[#3498DB] text-black rounded mt-4"
+                            type="submit"
+                        >
+                            {currentStep < 4 ? 'Next' : 'Submit'}
+                        </button>
+                    </div>
+
+
                 </form>
             )}
 
             {formSubmitted && (
                 <div className='-translate-y-[120px]'>
-
                     <p className='text-center'>According to our <span className='text-[#3498DB]'>AI model</span>, the result is:</p>
 
                     <div className="bg-[#fff] z-99 mt-4 pt-5 p-5 pr-12 border border-lg rounded-lg grid grid-cols-1 place-content-center content-center place-items-center shadow-md">
-
                         <p className='flex flex-row gap-12 font-bold text-center ml-[100px]'>
                             <p>University  </p>
                             <p>Acceptance Chance</p>
@@ -177,13 +191,11 @@ const Form = () => {
                                     </span>
                                 </p>
                             ))}
-
                     </div>
 
                     <div className='grid grid-cols-1 place-content-center content-center place-items-center'>
                         <button className='text-center text-[#3498DB] text-[16px] font-[700] pt-5' onClick={handleReload} ><u>Search again</u></button>
                     </div>
-
                 </div>
             )}
         </div>
