@@ -105,7 +105,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your current CGPA?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
+                                    className="p-2 border-2 bg-[#D4E9F7] border-[#3498DB] text-blackrounded rounded-lg w-full text-[18px]"
                                     name="cgpa"
                                     value={formData.cgpa}
                                     onChange={handleChange}
@@ -116,7 +116,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your IELTS Score?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
+                                    className="p-2 border-2 text-black bg-[#D4E9F7] border-[#3498DB] rounded rounded-lg w-full text-[18px]"
                                     name="ielts"
                                     value={formData.ielts}
                                     onChange={handleChange}
@@ -127,7 +127,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your GRE Score?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
+                                    className="p-2 border-2 text-black bg-[#D4E9F7] border-[#3498DB] rounded rounded-lg w-full text-[18px]"
                                     name="gre"
                                     value={formData.gre}
                                     onChange={handleChange}
@@ -138,7 +138,7 @@ const Form = () => {
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
                                 <p className='text-[24px] font-[#600] font-bold pb-3'>What is your estimated budget for study costs?</p>
                                 <input
-                                    className="p-2 border-2 text-black border-gray-200 rounded rounded-lg w-full text-[18px]"
+                                    className="p-2 border-2 text-black bg-[#D4E9F7] border-[#3498DB] rounded rounded-lg w-full text-[18px]"
                                     name="money"
                                     value={formData.money}
                                     onChange={handleChange}
