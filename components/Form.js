@@ -80,7 +80,7 @@ const Form = () => {
                     className="flex flex-row px-4 py-1  bg-[#D4E9F7] text-[20px] justify-between rounded text-black border border-[#3498DB] rounded-full mb-15 -translate-y-[80px] flex flex-row"
                 >
                     <p className='translate-y-2'>
-                        Explore Your Compatibility with Renowned Universities &nbsp;&nbsp;&nbsp;&nbsp;
+                        Click the search button to get started &nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
                     <img src="/search.svg" className='w-[45px] translate-x-3' alt="" />
                 </button>
@@ -89,7 +89,7 @@ const Form = () => {
                     onClick={handleMainButtonClick}
                     className="hidden"
                 >
-                    Explore Your Compatibility with Renowned Universities
+                    Click the search button to get started
                 </button>
             )}
 
