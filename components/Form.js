@@ -136,7 +136,7 @@ const Form = () => {
                         )}
                         {currentStep === 4 && (
                             <div className="mb-4 transition-opacity duration-500 ease-in-out transform translate-y-4">
-                                <p className='text-[24px] font-[#600] font-bold pb-3'>What is your estimated budget for study costs?</p>
+                                <p className='text-[24px] font-[#600] font-bold pb-3'>What is your estimated budget (USD) for study costs?</p>
                                 <input
                                     className="p-2 border-2 text-black bg-[#D4E9F7] border-[#3498DB] rounded rounded-full w-full text-[18px]"
                                     name="money"
