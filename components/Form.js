@@ -77,7 +77,7 @@ const Form = () => {
             {currentStep === 0 ? (
                 <button
                     onClick={handleMainButtonClick}
-                    className="flex flex-row px-4 py-1  bg-[#D4E9F7] text-[20px] justify-between rounded text-black border border-[#3498DB] rounded-full mb-15 -translate-y-[80px] flex flex-row"
+                    className="flex flex-row px-4 py-1  bg-[#D4E9F7] text-[20px] justify-between rounded text-black border border-[#3498DB] rounded-full mb-15 -translate-y-[80px] flex flex-row h-[55px]"
                 >
                     <p className='translate-y-2'>
                         Click the search button to get started &nbsp;&nbsp;&nbsp;&nbsp;
